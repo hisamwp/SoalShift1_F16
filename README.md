@@ -30,3 +30,15 @@
 
 # Nomer 4
 
+```
+rotat=`date +"%H"`
+
+format1=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+format2=abcdefghijklmnopqrstuvwxyz
+```
+
+Pertama, kita ambil jam dari sistem kita, lalu disimpan dalam variabel rotat. Lalu kita membuat variabel format1 dan format2, format1 berisi huruf uppercase, sedangkan format2 berisi huruf lowercase.
+
+```
+
+```
