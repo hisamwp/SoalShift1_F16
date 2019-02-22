@@ -1,5 +1,6 @@
 # Nomor 1
 <li> Decode Hexadecimal lalu lakukan hexxdump
+  
   ```
 unzip nature.zip
 olah1=`ls ~/Desktop/nomor1/nature | grep "[.]jpg$"`
@@ -49,6 +50,7 @@ done
 
 # Nomor 3
 <li>Membuat Password yang digenerate secara random
+  
   ```
 echo "berapa banyak jumlah password yang akan dibuat: "
 read input
@@ -70,4 +72,17 @@ done
 - Pada percabangan selanjutnya perintahkan untuk menggenerate password dengan aturan maximum 12 karakter yang terdapat huruf besar, huruf kecil, dan angka. Perintah yang digunakan untuk menggenerate password adalah ( tr -cd '[:alnum:]'  < /dev/urandom | fold -w12 | head -n1&>> "password-$i.txt" ). guna dari -cd adalah untuk menghapus segala jenis password selain alfanumerik, dan alfanumerik adalah kriteria yang diinginkan. fold -w12 digunakan untuk membatasi banyaknya jumlah password yang digenerate. sedangkan head -n1 digunakan agar hanya 1 baris password yang digenerate, dan diguna dari &>> "password-$i.txt" untuk memasukan kedalam file tersebut.
 
 # Nomer 4
+
+
+# Nomor 5
+
+```
+cat /var/log/syslog | awk 'tolower($0) ~ /cron/ && tolower($0) ~ !/sudo/ {print $0}' | awk 'NF<13' >> ~/Desktop/nomor5
+```
+1. Buat Script Bash sebagai berikut :
+- Pertama hal yang harus dilakukan adalah menampilkan isi file syslog dengan perintah cat (cat /var/log/syslog)
+- lalu pipe dan ikutin syarat yang perlu diikuti. gunakan awk untuk mengambil record yang sudah ditampilkan barusan. dengan aturan tidak mengandung string sudo dan mengandung string cron (/cron/ && !/sudo/), dan tidak bersifat case sensitif (tolower($0), lalu field pada baris kurang dari 13 ( NF<13 ) , >> ~/home/alfin/nomor5. untuk memasukan ke file tersebut.
+
+2. Lalu ditaruh di crontab untuk menjalankan script secara periodik dengan tempo yang diinginkan 2-30/6 * * * * ~Desktop/nomor5/nomor5.sh
+
 
