@@ -52,6 +52,7 @@ done
   Dalam source code diatas, kita menyaring data dengan kondisi ``` $1 -eq $a && $4 -eq $b```, dimana a merupakan hasil dari nomor 2a dan b merupakan hasil dari nomor 2b. Jika memenuhi kondisi, maka string c dengan indeks product akan terisi dengan jumlah quantity tiap product. Setelah mendapat nilai tersebut, kita sorting dengan ``` sort -nr```. Setelah sorting, kita print dan kita saring menjadi 3 terbesar dengan ``` head -3```.
 
 # Nomor 3
+<li> Menggenerate Password acak dengan ketentuan tertentu
 
 ```
 echo "berapa banyak jumlah password yang akan dibuat: "
@@ -107,6 +108,7 @@ filename=`date +"%H:%M %d-%m-%Y"`
 variabel filename berisi jam:menit hari-bulan-tahun. filename ini untuk menamai file yang akan dibuat setelah file /var/log/syslog dienkripsi. perintah selanjutnya adalah enkripsi akhir dari /var/log/syslog. Enkripsi tersebut disimpan dalam file bernama filename.
 
 # Nomor 5
+<li> Menyimpan record dalam syslog dengan ketentuan tertentu
 
 ```
 cat /var/log/syslog | awk 'tolower($0) ~ /cron/ && tolower($0) ~ !/sudo/ {print $0}' | awk 'NF<13' >> ~/Desktop/nomor5
