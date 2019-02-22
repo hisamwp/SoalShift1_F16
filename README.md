@@ -107,6 +107,32 @@ filename=`date +"%H:%M %d-%m-%Y"`
 
 variabel filename berisi jam:menit hari-bulan-tahun. filename ini untuk menamai file yang akan dibuat setelah file /var/log/syslog dienkripsi. perintah selanjutnya adalah enkripsi akhir dari /var/log/syslog. Enkripsi tersebut disimpan dalam file bernama filename.
 
+Diatas merupakan source code enkripsi file, untuk decrypt file logikanya hampir sama, namun logika tr nya dibalik.
+
+source code decrypt :
+```
+#!/bin/bash
+
+read filename
+rotat="${filename:0:2}"
+#echo $rotat
+
+format1=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+format2=abcdefghijklmnopqrstuvwxyz
+
+#format2=PQRSTUVWXYZABCDEFGHIJKLMNOpqrstuvwxyzabcdefghijklmno
+
+f1=($(echo ${format1[@]})$(echo ${format1[@]}))
+f2=($(echo ${format2[@]})$(echo ${format2[@]}))
+
+fUL=($(echo ${format1[@]})$(echo ${format2[@]}))
+newf1=$(echo $format1 | tr "${format1:0:26}" "${f1:${rotat}:26}")
+newf2=$(echo $format2 | tr "${format2:0:26}" "${f2:${rotat}:26}")
+fUL2=($(echo ${newf1[@]})$(echo ${newf2[@]}))
+
+< "$filename" > "$filename decrypted" tr "${fUL2}" "${fUL}"
+```
+
 # Nomor 5
 <li> Menyimpan record dalam syslog dengan ketentuan tertentu
 
