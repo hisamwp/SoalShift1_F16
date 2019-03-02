@@ -1,0 +1,4 @@
+0 * * * * bash ~/soal4.sh
+14 14 14 2 fri bash ~/Downloads/nomor1.sh
+2-30/6 * * * * bash ~/Downloads/SoalShift_modul1_F16-master/nomor5.sh
+
